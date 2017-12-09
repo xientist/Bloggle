@@ -1,0 +1,40 @@
+.button {
+    background-color: $blue;
+    padding: $s-size;
+    border: none;
+    color: white;
+    font-weight: 30;
+    font-size: $font-size-large;
+    display: inline-block;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.button--link {
+    background: none;
+    
+}
+
+.button--secondary {
+    background-color: #888888;
+}
+
+.button--modal {
+    margin:0 $s-size;
+}
+
+.google-button {
+    background-image: url('/images/gLogin.png');
+    background-size: contain;
+    border: none;
+    height: 60px;
+    width: 175px;
+}
+
+.fb-button {
+    background-image: url('/images/fbLogin.png');
+    background-size: contain;
+    border: none;
+    height: 30px;
+    width: 185px;
+}
