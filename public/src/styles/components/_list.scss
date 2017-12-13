@@ -7,6 +7,12 @@
     padding: $s-size $m-size;
 }
 
+.list-item__header {
+    justify-content: space-between;
+    display: flex;
+
+}
+
 .list-body {
     margin-bottom: $m-size;
     @media (min-width: $desktop-breakpoint) {
@@ -53,8 +59,18 @@
     font-size: $font-size-small;
 }
 
+.list-item__remove {
+    color: $grey;
+    font-size: $font-size-small;
+    text-decoration: none;
+    font-style: italic;
+    position: absolute;
+    margin-left: 675px;
+}
+
 .list-item__data {
     margin: $s-size 0 0 0;
+    font-weight: 200;
     @media (min-width: $desktop-breakpoint) {
         margin: 0;
     }

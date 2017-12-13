@@ -4,9 +4,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
 import AppRouter , { history } from './routers/AppRouter';
 import configureStore from './stores/configureStore';
-import getVisibileExpenses from './selectors/expenses';
 import expensesReducer from './reducers/expenses';
-import filtersReducer from './reducers/filters';
 import { startSetExpenses }from './actions/expenses';
 import { login , logout } from './actions/auth';
 import 'normalize.css/normalize.css';
@@ -17,11 +15,6 @@ import LoadingPage from './components/LoadingPage';
 
 const store = configureStore();
 
-store.subscribe(() => {
-    const state = store.getState();
-    const visibleExpenses = getVisibileExpenses(state.expenses, state.filters);
-    console.log(visibleExpenses);
-});
 
 const jsx = (
     <Provider store={store}>
@@ -48,13 +41,15 @@ firebase.auth().onAuthStateChanged((user) => {
         store.dispatch(login(user.uid));
         store.dispatch(startSetExpenses()).then(() => {
             renderApp();
-             history.push('/');
+            history.push('/');
          });
         console.log('log in. UID:', user.uid );
     } else {
         store.dispatch(logout());
         console.log('log out');
-        renderApp();
-        history.push('/');
+        store.dispatch(startSetExpenses()).then(() => {
+            renderApp();
+            history.push('/');
+         });
     }
 });

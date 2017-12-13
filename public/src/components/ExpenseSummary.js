@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import selectExpenses from '../selectors/expenses';
-import selectExpensesTotal from '../selectors/Expenses-total';
 import numeral from 'numeral';
 import { Link } from 'react-router-dom';
 import ExpenseForm from './ExpenseForm';

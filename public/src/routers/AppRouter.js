@@ -3,7 +3,6 @@ import { Router, Route, Switch, Link, NavLink } from 'react-router-dom';
 import ExpenseDashboardPage from '../components/ExpenseDashboardPage';
 import EditExpensePage from '../components/EditExpensePage';
 import NotFoundPage from '../components/NotFoundPage';
-
 import createHistory from 'history/createBrowserHistory';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
