@@ -3,55 +3,43 @@ import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import { connect } from 'react-redux';
 
-export class ExpenseForm extends React.Component {
+export class BloggleForm extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            description: props.expense ? props.expense.description : '',
-            note: props.expense ? props.expense.note : '',
-            createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
-            calenderFocused: false,
+            title: props.bloggle ? props.bloggle.title : '',
+            blog: props.bloggle ? props.bloggle.blog : '',
+            createdAt: props.bloggle ? moment(props.bloggle.createdAt) : moment(),
             error: ''
         };
     }
     
-    onDescriptionChange = (e) => {
-        const description = e.target.value;
-        this.setState(() => ({ description }));
+    onTitleChange = (e) => {
+        const title = e.target.value;
+        this.setState(() => ({ title }));
     }
-    onNoteChange = (e) => {
+    onBlogChange = (e) => {
         e.persist();
-        this.setState(() => ({ note: e.target.value }));
-    };
-
-
-    onDateChange = (createdAt) => {
-        if (createdAt) {
-            this.setState(() => ({ createdAt }));
-        }; 
-    };
-
-    onFocusChange = ( { focused } ) => {
-        this.setState(() => ({ calenderFocused: focused }))
+        this.setState(() => ({ blog: e.target.value }));
     };
 
     onSubmit = (e) => {
         e.preventDefault();
-        if (!this.state.description || !this.state.note) {
+        if (!this.state.title || !this.state.blog) {
             this.setState(() => ({ error: 'Please provide a title and a bloggle.' }))
         } else if (!this.props.isAuthenticated) {
             this.setState(() => ({ error: 'Please sign in to bloggle.' }))
         } else {
             this.setState(() => ({ 
-                description: '',
-                note: '',
+                title: '',
+                blog: '',
                 createdAt: '',
                 error: '' }));
             this.props.onSubmit({
-                description: this.state.description,
+                title: this.state.title,
                 createdAt: this.state.createdAt.valueOf(),
-                note: this.state.note
+                blog: this.state.blog
             })
             console.log('submitted');
         }
@@ -66,16 +54,16 @@ export class ExpenseForm extends React.Component {
                             placeholder="Title"
                             autoFocus
                             className="text-title"
-                            value={this.state.description}
-                            onChange={this.onDescriptionChange}
+                            value={this.state.title}
+                            onChange={this.onTitleChange}
                         />
-                        <button className="button" >Bloggle</button>
+                        <button className="button button-rounded" >Bloggle</button>
                     </div>
                     <textarea
                         placeholder="Start bloggle-ing"
-                        value={this.state.note}
+                        value={this.state.blog}
                         className="textarea"
-                        onChange={this.onNoteChange}
+                        onChange={this.onBlogChange}
                     >
                     </textarea>
             </form>
@@ -88,4 +76,4 @@ const mapStateToProps = (state) => ({
 })
 
 
-export default connect(mapStateToProps , undefined)(ExpenseForm);
+export default connect(mapStateToProps , undefined)(BloggleForm);

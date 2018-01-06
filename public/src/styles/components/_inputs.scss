@@ -16,11 +16,13 @@
     @extend .text-input;
     height: 10rem;
     resize: none;
+    border-radius: 10px;
 }
 
 .text-title {
     @extend .text-input;
-    width: 665px;
+    width: 630px;
+    border-radius: 10px;
 }
 
 .text-button-flex {

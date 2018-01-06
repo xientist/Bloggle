@@ -9,8 +9,9 @@ export const Header = ( {startLogout, startLoginGoogle , startLoginFacebook , is
         <div className="content-container">
             <div className="header__content">
                 <Link className="header__title" to="/">
-                    <h1>Bloggle</h1>
+                    <h1>bloggle</h1>
                 </Link>
+                <Link className="button button--link button--settings" to="/settings">Settings</Link>
                 {isAuthenticated  ? <button className="button button--link" onClick={startLogout}>Logout</button> : <button className="button button--link" onClick={startLoginGoogle}>Log in</button>}
             </div>
         </div>

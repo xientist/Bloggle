@@ -1,6 +1,7 @@
 .header {
-    background: $dark-blue;
-    
+    background: #20B2AA;
+    width: 100%;
+    position: fixed;
 }
 
 .header__content {
@@ -16,4 +17,5 @@
     h1 {
         margin: 0;
     }
+    font-family: 'Fredoka One', cursive;
 }

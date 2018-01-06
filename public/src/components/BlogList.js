@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ExpenseListItem from './ExpenseListItem';
+import BlogListItem from './BlogListItem';
+import dateSorter from '../selectors/date-sorter';
 
 
-export const ExpenseList = (props) => (
+export const BlogList = (props) => (
     <div className="content-container">
        <div className="list-header"> 
             <div className="show-for-mobile">Bloggles</div>
@@ -11,13 +12,13 @@ export const ExpenseList = (props) => (
         </div>
         <div className="list-body">
             {
-                props.expenses.length === 0 ? (
+                props.bloggles.length === 0 ? (
                     <div className="list-item list-item--message">
                         <span> No Bloggles </span>
                     </div>
                 ) : (
-                props.expenses.map((expense) => {
-                    return <ExpenseListItem key={expense.id} {...expense} />
+                props.bloggles.map((bloggle) => {
+                    return <BlogListItem key={bloggle.id} {...bloggle} />
                 })
                 )
             }
@@ -27,11 +28,11 @@ export const ExpenseList = (props) => (
 
 const mapStateToProps = (state) => {
     return {
-        expenses: state.expenses 
+        bloggles: dateSorter(state.bloggles) 
     };
 };
 
 
 
-export default connect(mapStateToProps)(ExpenseList);
+export default connect(mapStateToProps)(BlogList);
 

@@ -1,0 +1,23 @@
+.item-bar {
+    display: flex;
+    
+}
+
+.list-item__remove {
+    color: $grey;
+    font-size: $font-size-small;
+    font-style: italic;
+    text-decoration: none;
+    margin-right: $s-size;
+}
+
+.item-button {
+    background-color: white;
+    border: 1px solid darken($off-white, 7%);
+    padding: 5px 7px;
+    border-radius: 10px;
+    transition:  background .3s ease;
+    &:hover {
+        background: $off-white;
+    }
+}

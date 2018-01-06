@@ -1,8 +1,9 @@
 .form {
+    margin-top: 6rem;
     display: flex;
     flex-direction: column;
     > * {
-        margin-bottom: $m-size;
+        margin: $m-size;
     }
 }
 
@@ -10,4 +11,8 @@
     margin: 0 0 $m-size 0;
     font-style: italic;
 
+}
+
+.edit-form {
+    margin-top: -6rem;
 }
