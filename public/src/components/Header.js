@@ -4,19 +4,37 @@ import { connect } from 'react-redux';
 import { startLogout , startLoginGoogle , startLoginFacebook } from '../actions/auth';
 
 
-export const Header = ( {startLogout, startLoginGoogle , startLoginFacebook , isAuthenticated }) => (
-    <header className="header">
-        <div className="content-container">
-            <div className="header__content">
-                <Link className="header__title" to="/">
-                    <h1>bloggle</h1>
-                </Link>
-                <Link className="button button--link button--settings" to="/settings">Settings</Link>
-                {isAuthenticated  ? <button className="button button--link" onClick={startLogout}>Logout</button> : <button className="button button--link" onClick={startLoginGoogle}>Log in</button>}
-            </div>
-        </div>
-    </header>
-);
+class Header extends React.Component {
+
+    startStartLogout = () => {
+        location.reload();
+        this.props.startLogout();
+    }
+
+    startStatGoogleLogin = () => {
+        
+        this.props.startLoginGoogle();
+    
+    }
+
+
+    render() {
+        return (
+            <header className="header">
+                <div className="content-container">
+                    <div className="header__content">
+                        <Link className="header__title" to="/">
+                            <h1>bloggle</h1>
+                        </Link>
+                        <Link className="button button--link button--settings" to="/settings">Settings</Link>
+                        {this.props.isAuthenticated  ? <button className="button button--link" onClick={this.startStartLogout} >Logout</button> : <button className="button button--link" onClick={this.startStatGoogleLogin}>Log in</button>}
+                    </div>
+                </div>
+            </header>
+        )
+    }
+}
+
 
 const mapStateToProps = (state) => {
     return {

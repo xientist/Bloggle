@@ -2,8 +2,18 @@ import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import { connect } from 'react-redux';
+import firebase from '../firebase/firebase';
 
 export class BloggleForm extends React.Component {
+
+    setUsername = () => {
+        firebase.ref(`users/usernames/${this.props.uid}`).once('value').then((snapshot) => {
+            console.log(snapshot.val().username);
+            this.setState(() => ({username: snapshot.val().username }));
+        })
+    }
+
+
     constructor(props) {
         super(props);
 
@@ -11,9 +21,11 @@ export class BloggleForm extends React.Component {
             title: props.bloggle ? props.bloggle.title : '',
             blog: props.bloggle ? props.bloggle.blog : '',
             createdAt: props.bloggle ? moment(props.bloggle.createdAt) : moment(),
-            error: ''
+            error: '',
+            username: this.props.isAuthenticated && this.setUsername()
         };
     }
+    
     
     onTitleChange = (e) => {
         const title = e.target.value;
@@ -34,12 +46,13 @@ export class BloggleForm extends React.Component {
             this.setState(() => ({ 
                 title: '',
                 blog: '',
-                createdAt: '',
-                error: '' }));
+                error: '',
+                username: this.setUsername() }));
             this.props.onSubmit({
                 title: this.state.title,
                 createdAt: this.state.createdAt.valueOf(),
-                blog: this.state.blog
+                blog: this.state.blog,
+                username: this.state.username
             })
             console.log('submitted');
         }
@@ -72,7 +85,8 @@ export class BloggleForm extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    isAuthenticated: !!state.auth.uid
+    isAuthenticated: !!state.auth.uid,
+    uid: state.auth.uid
 })
 
 

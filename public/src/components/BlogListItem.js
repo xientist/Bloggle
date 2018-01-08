@@ -14,7 +14,7 @@ class BlogListItem extends React.Component {
             <div  className="list-item">
                 <div>
                     <h3 className="list-item__title">{this.props.title}</h3>
-                    <p className="list-item__sub-title"></p>
+                    <p className="list-item__sub-title">By {this.props.username}</p>
                     <span className="list-item__sub-title">{moment(this.props.createdAt).format( 'MMMM Do, YYYY h:mm:ss a')}</span>
                     <h3 className="list-item__data">{this.props.blog}</h3>
                     <ListItemBar id={this.props.id} uid={this.props.uid} isAuthenticated={this.props.isAuthenticated} likes={this.props.likes} likesID={this.props.likesID}/>

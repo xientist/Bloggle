@@ -11,7 +11,6 @@ import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
 import { firebase } from  './firebase/firebase';
 import LoadingPage from './components/LoadingPage';
-import { startSetUser } from './actions/users';
 
 const store = configureStore();
 
@@ -39,7 +38,6 @@ ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         store.dispatch(login(user.uid));
-
         store.dispatch(startSetBlogs()).then(() => {
             renderApp();
             history.push('/');
@@ -48,10 +46,11 @@ firebase.auth().onAuthStateChanged((user) => {
     } else {
         store.dispatch(logout());
         console.log('log out');
-    
         store.dispatch(startSetBlogs()).then(() => {
             renderApp();
             history.push('/');
+            
+            
          });
     }
 });

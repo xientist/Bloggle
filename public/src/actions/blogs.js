@@ -17,13 +17,6 @@ export const startAddBlog = (blogData = {}) => {
           username=''
         } = blogData;
 
-        blogData.username = database.ref('users/usernames').once('value').then((snapshot) => {
-            snapshot.find((cSnapshot) => {
-                if (cSnapshot === uid) {
-                    return cSnapshot.username;
-                }
-            });
-        });
 
         const blogs = { title, blog , createdAt , uid , likes , username };
 

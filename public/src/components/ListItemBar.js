@@ -14,7 +14,6 @@ export class ListItemBar extends React.Component {
     setStartAddLike = () => {
         let totalLike = this.props.likes + 1;
         if (this.state.liked === false) {
- 
                 this.props.startAddLike(this.props.id , {likes: totalLike});
                 this.setState(() => ({ liked: true }));
             }
