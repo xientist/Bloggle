@@ -13,7 +13,9 @@ class Header extends React.Component {
 
     startStatGoogleLogin = () => {
         
-        this.props.startLoginGoogle();
+        this.props.startLoginGoogle().then(() => {
+            location.reload();
+        });
     
     }
 
