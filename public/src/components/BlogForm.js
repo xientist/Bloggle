@@ -1,15 +1,21 @@
 import React from 'react';
 import moment from 'moment';
-import { SingleDatePicker } from 'react-dates';
 import { connect } from 'react-redux';
-import firebase from '../firebase/firebase';
+
+import database from '../firebase/firebase';
 
 export class BloggleForm extends React.Component {
 
     setUsername = () => {
-        firebase.ref(`users/usernames/${this.props.uid}`).once('value').then((snapshot) => {
-            console.log(snapshot.val().username);
+        database.ref(`users/usernames/${this.props.uid}`).once('value').then((snapshot) => {
             this.setState(() => ({username: snapshot.val().username }));
+        })
+    }
+
+    setUserImage = () => {
+        database.ref(`users/usernames/${this.props.uid}`).once('value').then((snapshot) => {
+            console.log(snapshot.val().userImage);
+            this.setState(() => ({userImage: snapshot.val().userImage }));
         })
     }
 
@@ -22,7 +28,8 @@ export class BloggleForm extends React.Component {
             blog: props.bloggle ? props.bloggle.blog : '',
             createdAt: props.bloggle ? moment(props.bloggle.createdAt) : moment(),
             error: '',
-            username: this.props.isAuthenticated && this.setUsername()
+            username: this.props.isAuthenticated && this.setUsername(),
+            userImage: this.props.isAuthenticated && this.setUserImage()
         };
     }
     
@@ -47,12 +54,15 @@ export class BloggleForm extends React.Component {
                 title: '',
                 blog: '',
                 error: '',
-                username: this.setUsername() }));
+                username: this.setUsername(),
+                userImage: this.setUserImage()
+             }));
             this.props.onSubmit({
                 title: this.state.title,
                 createdAt: this.state.createdAt.valueOf(),
                 blog: this.state.blog,
-                username: this.state.username
+                username: this.state.username,
+                userImage: this.state.userImage
             })
             console.log('submitted');
         }

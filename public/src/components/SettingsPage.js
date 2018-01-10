@@ -1,13 +1,16 @@
 import React from 'react';
 import Header from './Header';
 import { firebase } from '../firebase/firebase';
-import database from '../firebase/firebase';
+import { connect } from 'react-redux';
+import database  from '../firebase/firebase';
 
 
-class SettingsPage extends React.Component  {
+ class SettingsPage extends React.Component  {
 
     state = {
-        username: ''
+        username:  '',
+        userImage:  '',
+        error: ''
     }
 
     onUsernameChange = (e) => {
@@ -15,16 +18,23 @@ class SettingsPage extends React.Component  {
         this.setState(() => ({ username }));
     }
 
+    onUserImageChange = (e) => {
+        const userImage= e.target.value;
+        this.setState(() => ({ userImage }));
+    }
+
     onSubmit = (e) => {
         e.preventDefault();
         firebase.auth().onAuthStateChanged((user) => {
             let username = this.state.username;
-
+            let userImage = this.state.userImage;
+            
             if (user) {
                 database.ref(`users/usernames/${user.uid}`).set({
                     email: user.email,
                     uid: user.uid,
-                    username: username
+                    username: username,
+                    userImage: userImage
                 });
 
                 console.log(`User ${username} logged in!`)
@@ -33,6 +43,7 @@ class SettingsPage extends React.Component  {
             }
 
             this.props.history.push('/');
+
         });
     }
 
@@ -41,6 +52,7 @@ class SettingsPage extends React.Component  {
         <div>
             <Header />
             <form className="content-container username" onSubmit={this.onSubmit} >
+                <p className="form__error">{this.state.error}</p>
                 <h3>Set the username you want to display</h3>
                 <input
                     type="text"
@@ -50,7 +62,19 @@ class SettingsPage extends React.Component  {
                     value={this.state.username}
                     onChange={this.onUsernameChange}
                 />
-                <button className="button button-rounded" >Submit</button>
+                <h3>Set the user image you want to display</h3>
+                <input
+                    type="text"
+                    placeholder="user image"
+                    autoFocus
+                    className="text-username"
+                    value={this.state.userImage}
+                    onChange={this.onUserImageChange}
+                />
+                <div className="margin-top">
+                    <button className="button button-rounded" >Submit</button>
+                </div>
+                
             </form>
         </div>
         )
@@ -58,5 +82,10 @@ class SettingsPage extends React.Component  {
 }
 
 
+const mapStateToProps = (state) => ({
+    isAuthenticated: !!state.auth.uid,
+    uid: state.auth.uid
+})
 
-export default SettingsPage;
+
+export default connect(mapStateToProps , undefined)(SettingsPage);
