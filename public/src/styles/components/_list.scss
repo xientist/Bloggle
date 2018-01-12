@@ -61,6 +61,7 @@
     margin: $s-size 0 0 0;
     padding-bottom: $s-size;
     font-weight: 200;
+    white-space: pre-line;
     @media (min-width: $desktop-breakpoint) {
         margin: 0;
     }

@@ -43,6 +43,7 @@ export class BloggleForm extends React.Component {
         this.setState(() => ({ blog: e.target.value }));
     };
 
+
     onSubmit = (e) => {
         e.preventDefault();
         if (!this.state.title || !this.state.blog) {
@@ -87,6 +88,7 @@ export class BloggleForm extends React.Component {
                         value={this.state.blog}
                         className="textarea"
                         onChange={this.onBlogChange}
+                        onKeyDown={this.handleReturnKey}
                     >
                     </textarea>
             </form>

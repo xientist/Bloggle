@@ -14,7 +14,7 @@ class BlogListItem extends React.Component {
             <div  className="list-item">
                 <div>
                     <h3 className="list-item__title">{this.props.title}</h3>
-                    <div className="portrait" ><img className="list-image" src={this.props.userImage} /></div>
+                    <div className="portrait" >{this.props.userImage !== undefined ? <img className="list-image" src={this.props.userImage} /> : <img className="list-image" src="http://www.theeaglefan.com/ELB/Anonymous.jpg" />}</div>
                     <p className="list-item__sub-title">By {this.props.username}</p>
                     <span className="list-item__sub-title">{moment(this.props.createdAt).format( 'MMMM Do, YYYY h:mm:ss a')}</span>
                     <h3 className="list-item__data">{this.props.blog}</h3>

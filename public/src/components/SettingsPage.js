@@ -51,31 +51,33 @@ import database  from '../firebase/firebase';
         return (
         <div>
             <Header />
-            <form className="content-container username" onSubmit={this.onSubmit} >
-                <p className="form__error">{this.state.error}</p>
-                <h3>Set the username you want to display</h3>
-                <input
-                    type="text"
-                    placeholder="user name"
-                    autoFocus
-                    className="text-username"
-                    value={this.state.username}
-                    onChange={this.onUsernameChange}
-                />
-                <h3>Set the user image you want to display</h3>
-                <input
-                    type="text"
-                    placeholder="user image"
-                    autoFocus
-                    className="text-username"
-                    value={this.state.userImage}
-                    onChange={this.onUserImageChange}
-                />
-                <div className="margin-top">
-                    <button className="button button-rounded" >Submit</button>
-                </div>
-                
-            </form>
+            <div className="content-container username">
+                <form  onSubmit={this.onSubmit} >
+                    <p className="form__error">{this.state.error}</p>
+                    <h3>Set the username you want to display</h3>
+                    <input
+                        type="text"
+                        placeholder="user name"
+                        autoFocus
+                        className="text-username "
+                        value={this.state.username}
+                        onChange={this.onUsernameChange}
+                    />
+                    <h3>Set the user image you want to display</h3>
+                    <input
+                        type="text"
+                        placeholder="Paste image url link here"
+                        autoFocus
+                        className="text-username"
+                        value={this.state.userImage}
+                        onChange={this.onUserImageChange}
+                    />
+                    <div className="margin-top">
+                        <button className="button button-rounded" >Submit</button>
+                    </div>
+                    
+                </form>
+            </div>
         </div>
         )
     }
