@@ -28,7 +28,7 @@ class Header extends React.Component {
                         <Link className="header__title" to="/">
                             <h1>bloggle</h1>
                         </Link>
-                        <Link className="button button--link button--settings" to="/settings">Settings</Link>
+                        {this.props.isAuthenticated && <Link className="button button--link button--settings" to="/settings">Settings</Link>}
                         {this.props.isAuthenticated  ? <button className="button button--link" onClick={this.startStartLogout} >Logout</button> : <button className="button button--link" onClick={this.startStatGoogleLogin}>Log in</button>}
                     </div>
                 </div>
