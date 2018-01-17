@@ -6,17 +6,20 @@ import { startAddLike } from '../actions/blogs';
 
 export class ListItemBar extends React.Component {
 
-    state = {
-        liked: false
-    }
-
-
     setStartAddLike = () => {
-        let totalLike = this.props.likes + 1;
-        if (this.state.liked === false) {
-                this.props.startAddLike(this.props.id , {likes: totalLike});
-                this.setState(() => ({ liked: true }));
-            }
+        let addLike = this.props.likes + 1;
+        let totalLikeId = this.props.userLikes;
+        let userLikeId = this.props.userId;
+        totalLikeId.map((likeId) => {
+            if (likeId !== userLikeId) {
+                totalLikeId.push(userLikeId);
+                console.log(likeId);
+                console.log(userLikeId);
+                console.log(totalLikeId);
+                this.props.startAddLike(this.props.id , {likes: addLike , userLikes: totalLikeId})
+            };
+        });
+
     };
     
     render() {
@@ -34,8 +37,14 @@ export class ListItemBar extends React.Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        userId: state.auth.uid
+    }
+}
+
 const mapDispatchToProps = (dispatch , props) => ({
     startAddLike: (id , addCount) => dispatch(startAddLike(id , addCount))
 })
 
-export default connect(undefined , mapDispatchToProps)(ListItemBar);
+export default connect(mapStateToProps , mapDispatchToProps)(ListItemBar);

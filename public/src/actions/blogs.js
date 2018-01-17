@@ -15,11 +15,12 @@ export const startAddBlog = (blogData = {}) => {
           createdAt = 0,
           likes = 0,
           username='',
-          userImage=''
+          userImage='',
+          userLikes = ['123abc']
         } = blogData;
 
 
-        const blogs = { title, blog , createdAt , uid , likes , username , userImage };
+        const blogs = { title, blog , createdAt , uid , likes , username , userImage , userLikes };
 
 
 

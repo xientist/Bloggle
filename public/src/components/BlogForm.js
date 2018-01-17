@@ -9,15 +9,14 @@ export class BloggleForm extends React.Component {
     setUsername = () => {
         database.ref(`users/usernames/${this.props.uid}`).once('value').then((snapshot) => {
             this.setState(() => ({username: snapshot.val().username }));
-        })
-    }
+        });
+    };
 
     setUserImage = () => {
         database.ref(`users/usernames/${this.props.uid}`).once('value').then((snapshot) => {
-            console.log(snapshot.val().userImage);
             this.setState(() => ({userImage: snapshot.val().userImage }));
-        })
-    }
+        });
+    };
 
 
     constructor(props) {
