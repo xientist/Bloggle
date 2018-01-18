@@ -13,10 +13,10 @@ export class BlogList extends React.Component {
         this.state = {
             pageOfItems: []
         };
-        this.onChangePage = this.onChangePage.bind(this);
+
     }
 
-    onChangePage(pageOfItems) {
+    onChangePage = (pageOfItems) => {
         this.setState(() => ({ pageOfItems: pageOfItems }));
     }
 
@@ -36,9 +36,9 @@ export class BlogList extends React.Component {
                                 <span> No Bloggles </span>
                             </div>
                         ) : (
-                        this.props.bloggles.map((bloggle) => {
-                            return <BlogListItem key={bloggle.id} {...bloggle} />
-                        })
+                            this.state.pageOfItems.map((bloggle) => {
+                                return <BlogListItem key={bloggle.id} {...bloggle} />
+                            })
                         )
                     }
                 </div>
