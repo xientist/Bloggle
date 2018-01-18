@@ -2,9 +2,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 import BlogListItem from './BlogListItem';
 import dateSorter from '../selectors/date-sorter';
+import Pagination from '../pagination/pagination';
 
 
 export class BlogList extends React.Component {
+
+    constructor() {
+        super();
+
+        this.state = {
+            pageOfItems: []
+        };
+        this.onChangePage = this.onChangePage.bind(this);
+    }
+
+    onChangePage(pageOfItems) {
+        this.setState(() => ({ pageOfItems: pageOfItems }));
+    }
 
 
     render() {
@@ -28,6 +42,7 @@ export class BlogList extends React.Component {
                         )
                     }
                 </div>
+                <Pagination items={this.props.bloggles} onChangePage={this.onChangePage} />
             </div>
 
         );
