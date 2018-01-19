@@ -10,17 +10,14 @@ export class ListItemBar extends React.Component {
         let addLike = this.props.likes + 1;
         let totalLikeId = this.props.userLikes;
         let userLikeId = this.props.userId;
-        totalLikeId.map((likeId) => {
-            if (likeId !== userLikeId) {
+        
+        if (!totalLikeId.includes(userLikeId)) {
                 totalLikeId.push(userLikeId);
-                console.log(likeId);
-                console.log(userLikeId);
-                console.log(totalLikeId);
                 this.props.startAddLike(this.props.id , {likes: addLike , userLikes: totalLikeId})
-            };
-        });
+            } 
+        };
 
-    };
+    
     
     render() {
         return (
@@ -35,7 +32,7 @@ export class ListItemBar extends React.Component {
         </div>
         )
     }
-}
+};
 
 const mapStateToProps = (state) => {
     return {

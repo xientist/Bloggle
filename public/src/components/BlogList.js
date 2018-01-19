@@ -18,7 +18,6 @@ export class BlogList extends React.Component {
 
     onChangePage = (pageOfItems) => {
         this.setState(() => ({ pageOfItems: pageOfItems }));
-        window.scrollTo(0, 200);
         
     }
 
