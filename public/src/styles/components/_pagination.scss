@@ -1,0 +1,27 @@
+
+.pagination li {
+    display: inline-block;
+    margin-right: 10px;
+    text-decoration: none;
+    border: 1px solid darken($off-white, 7%);
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    &:hover {
+        background: $off-white;
+        color: black;
+    }
+    
+}
+
+.active {
+    background:#20B2AA;
+    color: white;
+    
+}
+
+.center {
+    text-align: center;
+}
+
+
+
