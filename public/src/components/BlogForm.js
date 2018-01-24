@@ -43,7 +43,7 @@ export class BloggleForm extends React.Component {
     };
 
     addEmoji = (emoji, e) => {
-        this.setState(() => ({ blog: this.state.blog + emoji }))
+        this.setState(() => ({ blog: this.state.blog + emoji.native }))
     }
 
 
