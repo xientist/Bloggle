@@ -1,8 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
-
 import database from '../firebase/firebase';
+import { Picker } from 'emoji-mart';
 
 export class BloggleForm extends React.Component {
 
@@ -42,6 +42,10 @@ export class BloggleForm extends React.Component {
         this.setState(() => ({ blog: e.target.value }));
     };
 
+    addEmoji = (emoji, e) => {
+        this.setState(() => ({ blog: this.state.blog + emoji }))
+    }
+
 
     onSubmit = (e) => {
         e.preventDefault();
@@ -67,6 +71,7 @@ export class BloggleForm extends React.Component {
             console.log('submitted');
         }
     }
+
     render() {
         return (
             <form className="form" onSubmit={this.onSubmit}>
@@ -90,6 +95,12 @@ export class BloggleForm extends React.Component {
                         onKeyDown={this.handleReturnKey}
                     >
                     </textarea>
+                    
+                    
+                    <Picker perLine={19} onClick={this.addEmoji} native={true} />
+                    
+                    
+                
             </form>
         )
     }
