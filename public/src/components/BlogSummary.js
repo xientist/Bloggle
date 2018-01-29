@@ -14,10 +14,9 @@ export class BlogSummary extends React.Component {
 
     render() {
         return (
-                <div className="page-header">
-                    <div className="content-container">
-                        <BlogForm onSubmit={this.onSubmit} />
-                    </div>
+
+                <div className="content-container">
+                    <BlogForm onSubmit={this.onSubmit} />
                 </div>
             );
     };

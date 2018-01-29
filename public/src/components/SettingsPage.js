@@ -67,7 +67,7 @@ import database  from '../firebase/firebase';
                 console.log('No username added')
             }
 
-            this.props.history.push('/');
+            this.props.history.push('/dashboard');
 
         });
     }
@@ -76,7 +76,7 @@ import database  from '../firebase/firebase';
         return (
         <div>
             <Header />
-            <div className="content-container username">
+            <div className="content-container settings">
                 <form  onSubmit={this.onSubmit} >
                     <p className="form__error">{this.state.error}</p>
                     <h3>Set the username you want to display</h3>
@@ -84,7 +84,7 @@ import database  from '../firebase/firebase';
                         type="text"
                         placeholder="user name"
                         autoFocus
-                        className="text-username "
+                        className="text-setting"
                         value={this.state.username}
                         onChange={this.onUsernameChange}
                     />
@@ -93,7 +93,7 @@ import database  from '../firebase/firebase';
                         type="text"
                         placeholder="Paste image url link here"
                         autoFocus
-                        className="text-username"
+                        className="text-setting"
                         value={this.state.userImage}
                         onChange={this.onUserImageChange}
                     />

@@ -18,7 +18,6 @@ export class BloggleForm extends React.Component {
         });
     };
 
-
     constructor(props) {
         super(props);
 
@@ -27,9 +26,14 @@ export class BloggleForm extends React.Component {
             blog: props.bloggle ? props.bloggle.blog : '',
             createdAt: props.bloggle ? moment(props.bloggle.createdAt) : moment(),
             error: '',
-            username: this.props.isAuthenticated && this.setUsername(),
-            userImage: this.props.isAuthenticated && this.setUserImage()
+            username: '',
+            userImage: ''
         };
+    }
+
+    componentWillMount() {
+        this.setUsername();
+        this.setUserImage();
     }
     
     
@@ -43,7 +47,7 @@ export class BloggleForm extends React.Component {
     };
 
     addEmoji = (emoji, e) => {
-        this.setState(() => ({ blog: this.state.blog + emoji.native }))
+            this.setState(() => ({ blog: this.state.blog + emoji.native }))
     }
 
 
@@ -77,7 +81,8 @@ export class BloggleForm extends React.Component {
             <form className="form" onSubmit={this.onSubmit}>
                 {this.state.error && <p className="form__error">{this.state.error}</p>}
                     <div className="text-button-flex">
-                        <input 
+                        <input
+                            id="title" 
                             type="text" 
                             placeholder="Title"
                             autoFocus
@@ -88,6 +93,7 @@ export class BloggleForm extends React.Component {
                         <button className="button button-rounded" >Bloggle</button>
                     </div>
                     <textarea
+                        id="textarea"
                         placeholder="Start bloggle-ing"
                         value={this.state.blog}
                         className="textarea"

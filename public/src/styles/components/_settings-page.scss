@@ -1,8 +1,10 @@
-.username {
+.settings {
     padding-top: 90px;
+    display:flex;
+    flex-direction: column;
 }
 
-.text-username {
+.text-setting {
     width: 630px;
     border-radius: 10px;
     border: 1px solid #cacccd;
@@ -11,6 +13,10 @@
     font-size: $font-size-large;
     font-weight: 300;
     margin-right: 20px;
+
+    @media (max-width: $desktop-breakpoint) {
+        width: unset;
+    }
 }
 
 .margin-top {

@@ -25,7 +25,7 @@ class Header extends React.Component {
             <header className="header">
                 <div className="content-container">
                     <div className="header__content">
-                        <Link className="header__title" to="/">
+                        <Link className="header__title" to="/dashboard">
                             <h1>bloggle</h1>
                         </Link>
                         {this.props.isAuthenticated && <Link className="button button--link button--settings" to="/settings">Settings</Link>}

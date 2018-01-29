@@ -21,13 +21,13 @@ export class EditBlogPage extends React.Component {
 
    onSubmit = ( blog ) => {
         this.props.startEditBlog(this.props.bloggle.id , blog);
-        this.props.history.push('/');
+        this.props.history.push('/dashboard');
          
    };
 
    onRemove = () => {
        this.props.startRemoveBlog( {idToRemove: this.props.bloggle.id} );
-       this.props.history.push('/');
+       this.props.history.push('/dashboard');
        this.setState(() => ({ blogInRemoval: false }))
    };
 

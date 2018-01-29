@@ -4,9 +4,11 @@ import BlogDashboardPage from '../components/BlogDashboardPage';
 import EditBlogPage from '../components/EditBlogPage';
 import NotFoundPage from '../components/NotFoundPage';
 import SettingsPage from '../components/SettingsPage';
+import LandingPage from '../components/LandingPage';
 import createHistory from 'history/createBrowserHistory';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+
 
 export const history = createHistory();
 
@@ -14,7 +16,8 @@ const AppRouter = () => (
     <Router history={history}>
         <div>
             <Switch>
-                <Route path="/" component={BlogDashboardPage} exact={true} />
+                <Route path="/" component={LandingPage} exact={true} />
+                <Route path="/dashboard" component={BlogDashboardPage} />
                 <PrivateRoute path="/edit/:id" component={EditBlogPage} />
                 <PrivateRoute path="/settings" component={SettingsPage} />
                 <Route component={NotFoundPage} />
