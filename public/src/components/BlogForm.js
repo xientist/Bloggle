@@ -26,17 +26,11 @@ export class BloggleForm extends React.Component {
             blog: props.bloggle ? props.bloggle.blog : '',
             createdAt: props.bloggle ? moment(props.bloggle.createdAt) : moment(),
             error: '',
-            username: '',
-            userImage: ''
+            username: this.props.isAuthenticated ? this.setUsername() : '',
+            userImage: this.props.isAuthenticated ? this.setUserImage() : ''
         };
     }
-
-    componentWillMount() {
-        this.setUsername();
-        this.setUserImage();
-    }
-    
-    
+        
     onTitleChange = (e) => {
         const title = e.target.value;
         this.setState(() => ({ title }));
