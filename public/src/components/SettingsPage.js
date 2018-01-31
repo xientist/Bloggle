@@ -3,41 +3,17 @@ import Header from './Header';
 import { firebase } from '../firebase/firebase';
 import { connect } from 'react-redux';
 import database  from '../firebase/firebase';
+import { startAddUser } from '../actions/users';
 
 
  class SettingsPage extends React.Component  {
 
-    setUsername = () => {
-        if (this.props.isAuthenticated) {
-            database.ref(`users/usernames/${this.props.uid}`).once('value').then((snapshot) => {
-            this.setState(() => ({username: snapshot.val().username }));
-            })
-        }
-
-    }
-
-    setUserImage = () => {
-        if (this.props.isAuthenticated) {
-            database.ref(`users/usernames/${this.props.uid}`).once('value').then((snapshot) => {
-            this.setState(() => ({userImage: snapshot.val().userImage }));
-            })
-        }
-
-    }
-
-    componentWillMount() {
-        this.setUsername();
-        this.setUserImage();
-
-    }
-
     state = {
-        username: '',
-        userImage: '',
-        error: ''
+            username:  '',
+            userImage:  '',
+            error: ''
     }
-
-
+    
     onUsernameChange = (e) => {
         const username = e.target.value;
         this.setState(() => ({ username }));
@@ -51,27 +27,34 @@ import database  from '../firebase/firebase';
     onSubmit = (e) => {
 
         e.preventDefault();
-        
-        firebase.auth().onAuthStateChanged((user) => {
-            let username = this.state.username;
-            let userImage = this.state.userImage;
-            
-            if (user) {
-                database.ref(`users/usernames/${user.uid}`).set({
-                    email: user.email,
-                    uid: user.uid,
-                    username: username,
-                    userImage: userImage
-                });
 
-                console.log(`User ${username} logged in!`)
-            } else {
-                console.log('No username added')
-            }
-
-            this.props.history.push('/dashboard');
-
+        this.props.startAddUser({
+            username: this.state.username,
+            userImage: this.state.userImage,
         });
+        
+        // firebase.auth().onAuthStateChanged((user) => {
+        //     let username = this.state.username;
+        //     let userImage = this.state.userImage;
+            
+        //     if (user) {
+        //         database.ref(`users/usernames/${user.uid}`).set({
+        //             email: user.email,
+        //             uid: user.uid,
+        //             username: username,
+        //             userImage: userImage
+        //         });
+
+        //         console.log(`User ${username} logged in!`)
+        //     } else {
+        //         console.log('No username added')
+        //     }
+
+            
+
+        // });
+
+        this.props.history.push('/dashboard');
     }
 
     render() {
@@ -113,8 +96,14 @@ import database  from '../firebase/firebase';
 
 const mapStateToProps = (state) => ({
     isAuthenticated: !!state.auth.uid,
-    uid: state.auth.uid
+    uid: state.auth.uid,
+    users: state.users
+
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    startAddUser: (user) => dispatch(startAddUser(user))
 })
 
 
-export default connect(mapStateToProps , undefined)(SettingsPage);
+export default connect(mapStateToProps , mapDispatchToProps)(SettingsPage);

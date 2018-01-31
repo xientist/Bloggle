@@ -6,17 +6,17 @@ import { Picker } from 'emoji-mart';
 
 export class BloggleForm extends React.Component {
 
-    setUsername = () => {
-        database.ref(`users/usernames/${this.props.uid}`).once('value').then((snapshot) => {
-            this.setState(() => ({username: snapshot.val().username }));
-        });
-    };
+    // setUsername = () => {
+    //     database.ref(`users/usernames/${this.props.uid}`).once('value').then((snapshot) => {
+    //         this.setState(() => ({username: snapshot.val().username }));
+    //     });
+    // };
 
-    setUserImage = () => {
-        database.ref(`users/usernames/${this.props.uid}`).once('value').then((snapshot) => {
-            this.setState(() => ({userImage: snapshot.val().userImage }));
-        });
-    };
+    // setUserImage = () => {
+    //     database.ref(`users/usernames/${this.props.uid}`).once('value').then((snapshot) => {
+    //         this.setState(() => ({userImage: snapshot.val().userImage }));
+    //     });
+    // };
 
     constructor(props) {
         super(props);
@@ -26,8 +26,8 @@ export class BloggleForm extends React.Component {
             blog: props.bloggle ? props.bloggle.blog : '',
             createdAt: props.bloggle ? moment(props.bloggle.createdAt) : moment(),
             error: '',
-            username: this.props.isAuthenticated ? this.setUsername() : '',
-            userImage: this.props.isAuthenticated ? this.setUserImage() : ''
+            username: '',
+            userImage:  ''
         };
     }
         
@@ -56,8 +56,8 @@ export class BloggleForm extends React.Component {
                 title: '',
                 blog: '',
                 error: '',
-                username: this.setUsername(),
-                userImage: this.setUserImage()
+                username: '',
+                userImage: ''
              }));
             this.props.onSubmit({
                 title: this.state.title,
