@@ -6,6 +6,7 @@ import NotFoundPage from '../components/NotFoundPage';
 import SettingsPage from '../components/SettingsPage';
 import LandingPage from '../components/LandingPage';
 import createHistory from 'history/createBrowserHistory';
+import Header from '../components/Header';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 

@@ -7,23 +7,23 @@ import database  from '../firebase/firebase';
 
  class SettingsPage extends React.Component  {
 
-        setUsername = () => {
-            if (this.props.isAuthenticated) {
-                database.ref(`users/usernames/${this.props.uid}`).once('value').then((snapshot) => {
-                this.setState(() => ({username: snapshot.val().username }));
-                })
-            }
-
+    setUsername = () => {
+        if (this.props.isAuthenticated) {
+            database.ref(`users/usernames/${this.props.uid}`).once('value').then((snapshot) => {
+            this.setState(() => ({username: snapshot.val().username }));
+            })
         }
 
-        setUserImage = () => {
-            if (this.props.isAuthenticated) {
-                database.ref(`users/usernames/${this.props.uid}`).once('value').then((snapshot) => {
-                this.setState(() => ({userImage: snapshot.val().userImage }));
-                })
-            }
+    }
 
+    setUserImage = () => {
+        if (this.props.isAuthenticated) {
+            database.ref(`users/usernames/${this.props.uid}`).once('value').then((snapshot) => {
+            this.setState(() => ({userImage: snapshot.val().userImage }));
+            })
         }
+
+    }
 
     componentWillMount() {
         this.setUsername();
@@ -49,7 +49,9 @@ import database  from '../firebase/firebase';
     }
 
     onSubmit = (e) => {
+
         e.preventDefault();
+        
         firebase.auth().onAuthStateChanged((user) => {
             let username = this.state.username;
             let userImage = this.state.userImage;
