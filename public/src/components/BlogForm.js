@@ -6,17 +6,19 @@ import { Picker } from 'emoji-mart';
 
 export class BloggleForm extends React.Component {
 
-    // setUsername = () => {
-    //     database.ref(`users/usernames/${this.props.uid}`).once('value').then((snapshot) => {
-    //         this.setState(() => ({username: snapshot.val().username }));
-    //     });
-    // };
+    setUser = () => {
+        return this.props.users.find((user) => user.id === this.props.uid)
+    }
 
-    // setUserImage = () => {
-    //     database.ref(`users/usernames/${this.props.uid}`).once('value').then((snapshot) => {
-    //         this.setState(() => ({userImage: snapshot.val().userImage }));
-    //     });
-    // };
+    checkUser = () => {
+        return this.props.users.find((user) => {
+            if (user.id === this.props.uid) {
+                return true;
+            } else {
+                return false;
+            }
+        })
+    }
 
     constructor(props) {
         super(props);
@@ -26,8 +28,8 @@ export class BloggleForm extends React.Component {
             blog: props.bloggle ? props.bloggle.blog : '',
             createdAt: props.bloggle ? moment(props.bloggle.createdAt) : moment(),
             error: '',
-            username: '',
-            userImage:  ''
+            username:  this.checkUser() ? this.setUser().username : '',
+            userImage: this.checkUser() ? this.setUser().userImage : ''
         };
     }
         
@@ -106,9 +108,10 @@ export class BloggleForm extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state , props) => ({
     isAuthenticated: !!state.auth.uid,
-    uid: state.auth.uid
+    uid: state.auth.uid,
+    users: state.users
 })
 
 

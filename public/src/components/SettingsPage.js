@@ -8,9 +8,23 @@ import { startAddUser } from '../actions/users';
 
  class SettingsPage extends React.Component  {
 
+    setUser = () => {
+        return this.props.users.find((user) => user.id === this.props.uid)
+    }
+
+    checkUser = () => {
+        return this.props.users.find((user) => {
+            if (user.id === this.props.uid) {
+                return true;
+            } else {
+                return false;
+            }
+        })
+    }
+
     state = {
-            username:  '',
-            userImage:  '',
+            username: this.checkUser() ? this.setUser().username : '',
+            userImage: this.checkUser() ? this.setUser().userImage : '',
             error: ''
     }
     
@@ -31,8 +45,9 @@ import { startAddUser } from '../actions/users';
         this.props.startAddUser({
             username: this.state.username,
             userImage: this.state.userImage,
-        });
-        
+        }).then(() => {
+            this.props.history.push('/dashboard');
+        })      
         // firebase.auth().onAuthStateChanged((user) => {
         //     let username = this.state.username;
         //     let userImage = this.state.userImage;
@@ -54,7 +69,7 @@ import { startAddUser } from '../actions/users';
 
         // });
 
-        this.props.history.push('/dashboard');
+        
     }
 
     render() {
@@ -94,7 +109,7 @@ import { startAddUser } from '../actions/users';
 }
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, props) => ({
     isAuthenticated: !!state.auth.uid,
     uid: state.auth.uid,
     users: state.users

@@ -5,10 +5,10 @@ import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
 import AppRouter , { history } from './routers/AppRouter';
 import configureStore from './stores/configureStore';
 import { startSetBlogs }from './actions/blogs';
+import { startSetUsers } from './actions/users';
 import { login , logout } from './actions/auth';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
-import 'react-dates/lib/css/_datepicker.css';
 import { firebase } from  './firebase/firebase';
 import LoadingPage from './components/LoadingPage';
 
@@ -40,6 +40,7 @@ ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         store.dispatch(login(user.uid));
+        store.dispatch(startSetUsers());
         store.dispatch(startSetBlogs()).then(() => {
             renderApp();
             history.push('/');
@@ -48,6 +49,7 @@ firebase.auth().onAuthStateChanged((user) => {
     } else {
         store.dispatch(logout());
         console.log('log out');
+        
         store.dispatch(startSetBlogs()).then(() => {
             renderApp();
             history.push('/');

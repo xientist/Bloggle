@@ -47,7 +47,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
     startLogout:  () => dispatch(startLogout()),
     startLoginGoogle: () => dispatch(startLoginGoogle()),
-    startLoginFacebook: () => dispatch(startLoginFacebook())
+    startLoginFacebook: () => dispatch(startLoginFacebook()),
 });
 
 
