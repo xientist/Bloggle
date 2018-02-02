@@ -104,17 +104,9 @@
 }
 
 .landing-block-info {
-    text-align: left;
-    margin-top: -20px; 
-    height: 300px;
+    text-align: left; 
+    height: 350px;
     width: 350px;
-}
-
-.landing-block-info__2 {
-    @extend .landing-block-info;
-    @media (max-width: $desktop-breakpoint) {
-        margin: 50px 0;
-    }
 }
 
 .why-header {
@@ -130,11 +122,56 @@
     
 }
 
-.card-logo-container {
+.card-container {
     @extend .code-logo-container;
+    margin-bottom: 20px;
 }
 
 .card-logo__img {
     height: 80px;
     width: 80px;
 }
+
+.card-p {
+    
+    height: 150px;
+    width: 150px;
+    margin: 0 auto;
+}
+
+.b-logo__bottom {
+    @extend .b-logo;
+    font-size: 60px;
+    padding: 0 14px;
+}
+
+.landing-bottom {
+    background: #20B2AA;
+    color: white;
+    width: 100%;
+    padding: 45px 0;
+    h2 {
+        font-family: 'Fredoka One', cursive;
+        margin-top: -10px;
+    }
+    p {
+        font-size: 12px;
+    }
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bottom-link {
+    display: flex;
+    flex-direction: column;
+    a {
+        text-decoration: none;
+        color: inherit;
+        font-size: 14px;
+    }
+}
+
+
