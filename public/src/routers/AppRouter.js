@@ -5,6 +5,7 @@ import EditBlogPage from '../components/EditBlogPage';
 import NotFoundPage from '../components/NotFoundPage';
 import SettingsPage from '../components/SettingsPage';
 import LandingPage from '../components/LandingPage';
+import UserProfile from '../components/UserProfile';
 import createHistory from 'history/createBrowserHistory';
 import Header from '../components/Header';
 import PrivateRoute from './PrivateRoute';
@@ -19,6 +20,7 @@ const AppRouter = () => (
             <Switch>
                 <Route path="/" component={LandingPage} exact={true} />
                 <Route path="/dashboard" component={BlogDashboardPage} />
+                <Route path="/profile/:id" component={UserProfile} />
                 <PrivateRoute path="/edit/:id" component={EditBlogPage} />
                 <PrivateRoute path="/settings" component={SettingsPage} />
                 <Route component={NotFoundPage} />

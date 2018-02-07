@@ -99,7 +99,7 @@ export class BloggleForm extends React.Component {
                     </textarea>
                     
                     
-                    <Picker perLine={window.innerWidth <= 768 ? 10 : 19} onClick={this.addEmoji} native={true} />
+                    <Picker perLine={window.innerWidth <= 768 ? 8 : 19} onClick={this.addEmoji} native={true} />
                     
                     
                 
