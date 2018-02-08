@@ -49,7 +49,7 @@ firebase.auth().onAuthStateChanged((user) => {
     } else {
         store.dispatch(logout());
         console.log('log out');
-        
+        store.dispatch(startSetUsers());
         store.dispatch(startSetBlogs()).then(() => {
             renderApp();
             history.push('/');

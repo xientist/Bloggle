@@ -3,10 +3,19 @@ import { connect } from 'react-redux';
 import Header from './Header';
 
 class UserProfile extends React.Component {
+    
     blogCount = () => {
         let user = this.props.users.find((user) => user.id === this.props.bloggle.uid);
         let blogCount = this.props.blogCount.filter((blog) => blog.uid === user.id);
         return blogCount.length;
+    }
+
+    totalLikes = () => {
+        let user = this.props.users.find((user) => user.id === this.props.bloggle.uid);
+        let userBlogs = this.props.blogCount.filter((blog) => blog.uid === user.id);
+        return userBlogs.reduce((a, b) => { return  a + b['likes'] }, 0);
+
+
     }
 
     render() {
@@ -18,7 +27,7 @@ class UserProfile extends React.Component {
                         {this.props.bloggle.userImage !== '' ? <img className="list-image" src={this.props.bloggle.userImage} /> : <img className="list-image" src="http://www.theeaglefan.com/ELB/Anonymous.jpg" />}
                     </div>
                     <p>Total Bloggles: {this.blogCount()}</p>
-
+                    <p>Total Likes: {this.totalLikes()}</p>
                 </div>
             </div>
         )
