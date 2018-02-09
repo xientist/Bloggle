@@ -14,8 +14,8 @@ class BlogListItem extends React.Component {
             <div  className="list-item">
                 <div>
                     <h3 className="list-item__title">{this.props.title}</h3>
-                    <Link to={`/profile/${this.props.id}`}><div className="portrait" >{this.props.userImage !== '' ? <img className="list-image" src={this.props.userImage} /> : <img className="list-image" src="http://www.theeaglefan.com/ELB/Anonymous.jpg" />}</div></Link>
-                    <Link to={`/profile/${this.props.id}`}><p className="list-item__sub-title">By {this.props.username}</p></Link>
+                    <Link to={`/profile/${this.props.uid}`}><div className="portrait" >{this.props.userImage !== '' ? <img className="list-image" src={this.props.userImage} /> : <img className="list-image" src="http://www.theeaglefan.com/ELB/Anonymous.jpg" />}</div></Link>
+                    <Link to={`/profile/${this.props.uid}`}><p className="list-item__sub-title">By {this.props.username}</p></Link>
                     <span className="list-item__sub-title">{moment(this.props.createdAt).format( 'MMMM Do, YYYY h:mm:ss a')}</span>
                     <h3 className="list-item__data">{this.props.blog}</h3>
                     <ListItemBar id={this.props.id} uid={this.props.uid} isAuthenticated={this.props.isAuthenticated} likes={this.props.likes} userLikes={this.props.userLikes}/>
