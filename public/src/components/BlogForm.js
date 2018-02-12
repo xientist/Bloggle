@@ -28,6 +28,7 @@ export class BloggleForm extends React.Component {
             blog: props.bloggle ? props.bloggle.blog : '',
             createdAt: props.bloggle ? moment(props.bloggle.createdAt) : moment(),
             error: '',
+            emoji: false,
             username:  this.checkUser() ? this.setUser().username : '',
             userImage: this.checkUser() ? this.setUser().userImage : ''
         };
@@ -43,7 +44,11 @@ export class BloggleForm extends React.Component {
     };
 
     addEmoji = (emoji, e) => {
-            this.setState(() => ({ blog: this.state.blog + emoji.native }))
+        this.setState(() => ({ blog: this.state.blog + emoji.native }))
+    }
+
+    emojiToggle = () => {
+        this.setState(() => ({ emoji: !this.state.emoji }));
     }
 
 
@@ -74,36 +79,36 @@ export class BloggleForm extends React.Component {
 
     render() {
         return (
-            <form className="form" onSubmit={this.onSubmit}>
-                {this.state.error && <p className="form__error">{this.state.error}</p>}
-                    <div className="text-button-flex">
-                        <input
-                            id="title" 
-                            type="text" 
-                            placeholder="Title"
-                            autoFocus
-                            className="text-title"
-                            value={this.state.title}
-                            onChange={this.onTitleChange}
-                        />
-                        <button className="button button-rounded" >Bloggle</button>
-                    </div>
-                    <textarea
-                        id="textarea"
-                        placeholder="Start bloggle-ing"
-                        value={this.state.blog}
-                        className="textarea"
-                        onChange={this.onBlogChange}
-                        onKeyDown={this.handleReturnKey}
-                    >
-                    </textarea>
-                    
-                    
-                    <Picker perLine={window.innerWidth <= 768 ? 8 : 19} onClick={this.addEmoji} native={true} />
-                    
-                    
-                
-            </form>
+            <div>
+                <form className="form" onSubmit={this.onSubmit}>
+                    {this.state.error && <p className="form__error">{this.state.error}</p>}
+                        <div className="text-button-flex">
+                            <input
+                                id="title" 
+                                type="text" 
+                                placeholder="Title"
+                                autoFocus
+                                className="text-title"
+                                value={this.state.title}
+                                onChange={this.onTitleChange}
+                            />
+                            <button className="button button-rounded" >Bloggle</button>
+                        </div>
+                        <textarea
+                            id="textarea"
+                            placeholder="Start bloggle-ing"
+                            value={this.state.blog}
+                            className="textarea"
+                            onChange={this.onBlogChange}
+                            onKeyDown={this.handleReturnKey}
+                        >
+                        </textarea>
+                </form>
+                <div className="emoji-div">
+                    <button onClick={this.emojiToggle}>Toggle emojis</button>
+                    {this.state.emoji && <Picker perLine={window.innerWidth <= 768 ? 8 : 19} onClick={this.addEmoji} native={true} />}
+                </div>
+            </div>
         )
     }
 }

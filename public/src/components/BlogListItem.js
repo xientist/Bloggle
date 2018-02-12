@@ -20,7 +20,7 @@ class BlogListItem extends React.Component {
                         <div>
                             <h3 className="list-item__title">{this.props.title}</h3>
                             <Link to={`/profile/${this.props.uid}`} className="no-decoration"><p className="list-item__sub-title">By {this.props.username}</p></Link>
-                            <p className="list-item__date">{moment(this.props.createdAt).format( 'MMMM Do, YYYY h:mm:ss a')}</p>
+                            <p className="list-item__date">{moment(this.props.createdAt).format( 'MMMM Do, YYYY h:mm a')}</p>
                         </div>
                     </div>
                     <div className="bloggle-comment">
