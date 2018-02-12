@@ -49,12 +49,23 @@
 .list-item__title {
     margin: 0;
     word-break: break-all;
+    padding-left: 10px;
 }
 
 .list-item__sub-title {
     color: $grey;
     font-size: $font-size-small;
+    padding-left: 10px;
+    margin-top:-2px;
+}
 
+.no-decoration {
+    text-decoration: none;
+}
+
+.list-item__date {
+    @extend .list-item__sub-title;
+    margin-top: -10px;
 }
 
 .list-item__data {
@@ -74,6 +85,14 @@
 }
 
 .portrait {
-    height: 60px;
+    height: 50px;
     width: 60px;
+}
+
+.bloggle-user-info {
+    display: flex;
+}
+
+.bloggle-comment{
+    display:flex;
 }
