@@ -27,7 +27,7 @@
     padding: $s-size;
     text-decoration: none;
     margin-bottom:15px;
-
+    background: white;
     @media (min-width: $desktop-breakpoint) {
         flex-direction: row;
         justify-content: space-between;

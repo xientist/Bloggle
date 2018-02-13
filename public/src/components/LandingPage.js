@@ -10,7 +10,7 @@ const LandingPage = () => (
             <p>The simple blogging site.</p>
             <Button raised><Link className="start-link" to="/dashboard">Start Bloggling</Link></Button>
         </header>
-        <div className="content-container">
+        <div className="content-container content-container--white">
             <p className="centered-landing-font">Bloggle is crafted with</p>
             <hr className="header-line" />
             <div className="code-logo-container">

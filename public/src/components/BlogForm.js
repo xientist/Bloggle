@@ -105,7 +105,7 @@ export class BloggleForm extends React.Component {
                         </textarea>
                 </form>
                 <div className="emoji-div">
-                    <button onClick={this.emojiToggle}>Toggle emojis</button>
+                    <button className="emoji-button" onClick={this.emojiToggle}><img className="button-size" src="https://png.icons8.com/metro/1600/happy.png" /></button>
                     {this.state.emoji && <Picker perLine={window.innerWidth <= 768 ? 8 : 19} onClick={this.addEmoji} native={true} />}
                 </div>
             </div>
