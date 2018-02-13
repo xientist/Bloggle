@@ -51,7 +51,6 @@ export class BloggleForm extends React.Component {
         this.setState(() => ({ emoji: !this.state.emoji }));
     }
 
-
     onSubmit = (e) => {
         e.preventDefault();
         if (!this.state.title || !this.state.blog) {
@@ -91,6 +90,7 @@ export class BloggleForm extends React.Component {
                                 className="text-title"
                                 value={this.state.title}
                                 onChange={this.onTitleChange}
+                                autoComplete="off"
                             />
                             <button className="button button-rounded" >Bloggle</button>
                         </div>
@@ -106,6 +106,8 @@ export class BloggleForm extends React.Component {
                 </form>
                 <div className="emoji-div">
                     <button className="emoji-button" onClick={this.emojiToggle}><img className="button-size" src="https://png.icons8.com/metro/1600/happy.png" /></button>
+                </div>
+                <div className="picker-div">
                     {this.state.emoji && <Picker perLine={window.innerWidth <= 768 ? 8 : 19} onClick={this.addEmoji} native={true} />}
                 </div>
             </div>

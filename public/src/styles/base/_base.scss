@@ -29,3 +29,7 @@ button:disabled {
 a {
     cursor: pointer;
 }
+
+button:focus {
+    outline: none;
+}
