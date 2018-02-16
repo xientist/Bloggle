@@ -6,6 +6,10 @@ import dateSorter from '../selectors/date-sorter';
 
 class UserProfile extends React.Component {
 
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
     userInfo = () => {
         let user = this.props.users.find((user) => user.id === this.props.bloggle.uid);
         return user;

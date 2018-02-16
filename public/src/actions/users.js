@@ -7,12 +7,13 @@ export const setUsers = (users) => ({
 
 
 
-export const addUser = (user) => ({
-    type: 'ADD_USER',
+export const editUser = (id, user) => ({
+    type: 'EDIT_USER',
+    id,
     user
 })
 
-export const startAddUser = (userData ={}) => {
+export const startEditUser = (userData ={}) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
         const {
@@ -23,7 +24,7 @@ export const startAddUser = (userData ={}) => {
         const user = { username , userImage };
 
         return database.ref(`users/usernames/${uid}`).set(user).then(() => {
-            dispatch(addUser({id: uid, ...user}))
+            dispatch(editUser(uid, {id: uid, ...user}))
         })
     }
 }

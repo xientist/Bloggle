@@ -4,6 +4,7 @@ import { firebase } from '../firebase/firebase';
 import { connect } from 'react-redux';
 import database  from '../firebase/firebase';
 import { startAddUser } from '../actions/users';
+import { startUpdateUserBlogs } from '../actions/blogs';
 
 
  class SettingsPage extends React.Component  {
@@ -42,12 +43,10 @@ import { startAddUser } from '../actions/users';
 
         e.preventDefault();
 
-        this.props.startAddUser({
+        this.props.startUpdateUserBlogs(this.props.uid, {
             username: this.state.username,
             userImage: this.state.userImage,
-        }).then(() => {
-            this.props.history.push('/dashboard');
-        })      
+        })
         // firebase.auth().onAuthStateChanged((user) => {
         //     let username = this.state.username;
         //     let userImage = this.state.userImage;
@@ -117,7 +116,8 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    startAddUser: (user) => dispatch(startAddUser(user))
+    startAddUser: (user) => dispatch(startAddUser(user)),
+    startUpdateUserBlogs: (id, userInfo) => dispatch(startUpdateUserBlogs(id, userInfo))
 })
 
 

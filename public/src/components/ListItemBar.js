@@ -27,7 +27,6 @@ export class ListItemBar extends React.Component {
             this.props.startAddLike(this.props.id, {likes: subtractLike , userLikes: totalLikeId})
 
         } 
-        
     };
 
     

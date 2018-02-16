@@ -33,6 +33,10 @@ export class Pagination extends React.Component {
             this.setPage(this.props.initialPage);
         }
     }
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+    
 
     setPage(page) {
 

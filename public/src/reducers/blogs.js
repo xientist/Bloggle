@@ -24,6 +24,17 @@ export default (state = blogglesReducerDefaultState, action) => {
                 });
         case 'SET_BLOGS' :
             return action.blogs;
+        case 'UPDATE_USER' :
+            return state.map((bloggle) => {
+                if (bloggle.uid === action.id) {
+                    return {
+                        ...bloggle,
+                        ...action.userInfo
+                    };
+                } else {
+                    return bloggle;
+                }
+            })
         case 'ADD_LIKE' :
             return state.map((bloggle) => {
                 if (bloggle.id === action.id) {

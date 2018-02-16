@@ -89,6 +89,17 @@ export const startSetBlogs = () => {
 };
 
 
+        // const bloggles = getState().bloggles
+        // return database.ref('users/bloggles').update(bloggles);
+    
+
+export const startUpdateUserBlogs = (id, userInfo) => ({
+    type: 'UPDATE_USER',
+    id,
+    userInfo
+});
+
+
 export const startRemoveBlog = ( { idToRemove } ) => {
     return  (dispatch) => {
        return database.ref(`users/bloggles/${idToRemove}`).remove().then(() => {
