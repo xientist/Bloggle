@@ -88,11 +88,6 @@ export const startSetBlogs = () => {
     };
 };
 
-
-        // const bloggles = getState().bloggles
-        // return database.ref('users/bloggles').update(bloggles);
-    
-
 export const startUpdateUserBlogs = (id, userInfo) => ({
     type: 'UPDATE_USER',
     id,

@@ -3,7 +3,7 @@ import Header from './Header';
 import { firebase } from '../firebase/firebase';
 import { connect } from 'react-redux';
 import database  from '../firebase/firebase';
-import { startAddUser } from '../actions/users';
+import { startEditUser } from '../actions/users';
 import { startUpdateUserBlogs } from '../actions/blogs';
 
 
@@ -45,29 +45,24 @@ import { startUpdateUserBlogs } from '../actions/blogs';
 
         this.props.startUpdateUserBlogs(this.props.uid, {
             username: this.state.username,
-            userImage: this.state.userImage,
+            userImage: this.state.userImage
         })
-        // firebase.auth().onAuthStateChanged((user) => {
-        //     let username = this.state.username;
-        //     let userImage = this.state.userImage;
-            
-        //     if (user) {
-        //         database.ref(`users/usernames/${user.uid}`).set({
-        //             email: user.email,
-        //             uid: user.uid,
-        //             username: username,
-        //             userImage: userImage
-        //         });
 
-        //         console.log(`User ${username} logged in!`)
-        //     } else {
-        //         console.log('No username added')
-        //     }
-
-            
-
-        // });
-
+        this.props.startEditUser({
+            username: this.state.username,
+            userImage: this.state.userImage
+        }).then(() => {
+            const newBloggle = [];
+            this.props.bloggles.forEach((bloggle) => {
+                newBloggle.push({
+                    id: bloggle.key,
+                    ...bloggle
+                })
+            })
+            database.ref(`users/bloggles`).set(newBloggle).then(() => {
+                this.props.history.push('/');
+            })
+        })
         
     }
 
@@ -111,12 +106,13 @@ import { startUpdateUserBlogs } from '../actions/blogs';
 const mapStateToProps = (state, props) => ({
     isAuthenticated: !!state.auth.uid,
     uid: state.auth.uid,
-    users: state.users
+    users: state.users,
+    bloggles: state.bloggles
 
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    startAddUser: (user) => dispatch(startAddUser(user)),
+    startEditUser: (user) => dispatch(startEditUser(user)),
     startUpdateUserBlogs: (id, userInfo) => dispatch(startUpdateUserBlogs(id, userInfo))
 })
 
