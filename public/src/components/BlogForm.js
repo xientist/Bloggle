@@ -7,15 +7,11 @@ import { Picker } from 'emoji-mart';
 export class BloggleForm extends React.Component {
 
     setUser = () => {
-        return this.props.users.find((user) => user.id === this.props.uid)
-    }
-
-    checkUser = () => {
         return this.props.users.find((user) => {
             if (user.id === this.props.uid) {
-                return true;
+                return user.id;
             } else {
-                return false;
+                return '';
             }
         })
     }
@@ -29,8 +25,8 @@ export class BloggleForm extends React.Component {
             createdAt: props.bloggle ? moment(props.bloggle.createdAt) : moment(),
             error: '',
             emoji: false,
-            username:  this.checkUser() ? this.setUser().username : '',
-            userImage: this.checkUser() ? this.setUser().userImage : ''
+            username:  '',
+            userImage: ''
         };
     }
         
@@ -69,8 +65,8 @@ export class BloggleForm extends React.Component {
                 title: this.state.title,
                 createdAt: this.state.createdAt.valueOf(),
                 blog: this.state.blog,
-                username: this.state.username,
-                userImage: this.state.userImage
+                username: this.setUser().username,
+                userImage: this.setUser().userImage
             })
             console.log('submitted');
         }

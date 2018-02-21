@@ -94,7 +94,6 @@ export const startUpdateUserBlogs = (id, userInfo) => ({
     userInfo
 });
 
-
 export const startRemoveBlog = ( { idToRemove } ) => {
     return  (dispatch) => {
        return database.ref(`users/bloggles/${idToRemove}`).remove().then(() => {

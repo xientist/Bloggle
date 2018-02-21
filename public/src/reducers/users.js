@@ -2,7 +2,7 @@ const defaultUserState = [];
 
 export default (state = defaultUserState, action) => {
     switch (action.type) {
-        case  'CREATE_USER' :
+        case  'EDIT_USER' :
             return state.map((user) => {
                 if (user.id === action.id) {
                     return {

@@ -52,16 +52,13 @@ import { startUpdateUserBlogs } from '../actions/blogs';
             username: this.state.username,
             userImage: this.state.userImage
         }).then(() => {
-            const newBloggle = [];
-            this.props.bloggles.forEach((bloggle) => {
-                newBloggle.push({
-                    id: bloggle.key,
-                    ...bloggle
-                })
-            })
-            database.ref(`users/bloggles`).set(newBloggle).then(() => {
-                this.props.history.push('/');
-            })
+            this.props.bloggles.map((bloggle => {
+                if (bloggle.uid === this.props.uid) {
+                    database.ref(`users/bloggles/${bloggle.id}`).update(bloggle).then(() => {
+                        this.props.history.push('/');
+                    })
+                }
+            }))
         })
         
     }
@@ -103,7 +100,7 @@ import { startUpdateUserBlogs } from '../actions/blogs';
 }
 
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state) => ({
     isAuthenticated: !!state.auth.uid,
     uid: state.auth.uid,
     users: state.users,
