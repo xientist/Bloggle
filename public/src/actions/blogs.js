@@ -82,7 +82,6 @@ export const startSetBlogs = () => {
                     ...cSnapShot.val()
                 });
             });
-            
             dispatch(setBlogs(blogs));
         });
     };

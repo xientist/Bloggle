@@ -13,6 +13,28 @@ export const editUser = (id, user) => ({
     user
 })
 
+export const addUser = (user) => ({
+    type: 'ADD_USER',
+    user
+})
+
+export const startAddUser = () => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+
+        const user = {
+            username: '',
+            userImage: ''
+        }
+
+        return database.ref(`users/usernames/${uid}`).push(user).then(() => {
+            dispatch(addUser({id: uid, ... user}));
+        })
+    } 
+
+
+}
+
 export const startEditUser = (userData ={}) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
@@ -24,7 +46,7 @@ export const startEditUser = (userData ={}) => {
         const user = { username , userImage };
 
         return database.ref(`users/usernames/${uid}`).set(user).then(() => {
-            dispatch(editUser(uid, {id: uid, ...user}))
+            dispatch(editUser(uid, {id: uid, ... user}))
         })
     }
 }

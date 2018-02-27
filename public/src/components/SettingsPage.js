@@ -3,7 +3,7 @@ import Header from './Header';
 import { firebase } from '../firebase/firebase';
 import { connect } from 'react-redux';
 import database  from '../firebase/firebase';
-import { startEditUser } from '../actions/users';
+import { startEditUser, startAddUser } from '../actions/users';
 import { startUpdateUserBlogs } from '../actions/blogs';
 
 
@@ -18,6 +18,7 @@ import { startUpdateUserBlogs } from '../actions/blogs';
             if (user.id === this.props.uid) {
                 return true;
             } else {
+                this.props.startAddUser();
                 return false;
             }
         })
@@ -54,10 +55,9 @@ import { startUpdateUserBlogs } from '../actions/blogs';
         }).then(() => {
             this.props.bloggles.map((bloggle => {
                 if (bloggle.uid === this.props.uid) {
-                    database.ref(`users/bloggles/${bloggle.id}`).update(bloggle).then(() => {
-                        this.props.history.push('/');
-                    })
+                    database.ref(`users/bloggles/${bloggle.id}`).update(bloggle)
                 }
+                this.props.history.push('/dashboard');
             }))
         })
         
@@ -110,7 +110,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     startEditUser: (user) => dispatch(startEditUser(user)),
-    startUpdateUserBlogs: (id, userInfo) => dispatch(startUpdateUserBlogs(id, userInfo))
+    startUpdateUserBlogs: (id, userInfo) => dispatch(startUpdateUserBlogs(id, userInfo)),
+    startAddUser: () => dispatch(startAddUser())
 })
 
 
