@@ -39,7 +39,7 @@ export class ListItemBar extends React.Component {
                 && 
                 <Link className="list-item__remove item-button" to={`/edit/${this.props.id}`}><span >Edit</span></Link>
                 }
-                <button className={"item-button"} onClick={this.setStartAddLike}>{this.props.likes}{this.props.likes > 1 ? ' Likes' : ' Like'}</button>
+                <button className={"item-button"} disabled={!this.props.isAuth} onClick={this.setStartAddLike}>{this.props.likes}{this.props.likes > 1 ? ' Likes' : ' Like'}</button>
             </div>
         </div>
         )
@@ -48,6 +48,7 @@ export class ListItemBar extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
+        isAuth: !!state.auth.uid,
         userId: state.auth.uid
     }
 }

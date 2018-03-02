@@ -12,6 +12,7 @@ body {
     font-size: $m-size;
     line-height: 1.6;
     background: darken(white, 1%);
+    
 }
 
 button {
@@ -31,5 +32,17 @@ a {
 }
 
 button:focus {
+    outline: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+button:focus {
+    outline: none;
+}
+
+textarea:focus {
     outline: none;
 }

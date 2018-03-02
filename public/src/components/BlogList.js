@@ -25,10 +25,7 @@ export class BlogList extends React.Component {
         return (
 
             <div className="content-container">
-                <div className="list-header"> 
-                    <div className="show-for-mobile">Bloggles</div>
-                    <div className="show-for-desktop">Bloggles</div>
-                </div>
+ 
                 <div className="list-body">
                     {
                         this.props.bloggles.length === 0 ? (
@@ -56,6 +53,10 @@ const mapStateToProps = (state) => {
     };
 };
 
+            //    <div className="list-header"> 
+            //         <div className="show-for-mobile">Bloggles</div>
+            //         <div className="show-for-desktop">Bloggles</div>
+            //     </div>
 
 
 export default connect(mapStateToProps)(BlogList);

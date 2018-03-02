@@ -17,11 +17,24 @@
     margin-top: -6rem;
 }
 
-.emoji-div {
+.buttons-div {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    margin-top: 20px;
 }
 
 .picker-div {
-    padding: 30px;
+    padding-left: 10px;
+    margin-top: -35px;
+}
+
+.form-bar {
+    background-color: $off-white;;
+    display: flex;
+    max-width: 80rem;
+    border: 1px solid #cacccd;
+    border-top: none;
+    position: relative;
+    top: -33px;
+    height: 60px;
 }

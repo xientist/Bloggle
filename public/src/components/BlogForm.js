@@ -26,7 +26,8 @@ export class BloggleForm extends React.Component {
             error: '',
             emoji: false,
             username:  '',
-            userImage: ''
+            userImage: '',
+            pictures: []
         };
     }
         
@@ -45,6 +46,12 @@ export class BloggleForm extends React.Component {
 
     emojiToggle = () => {
         this.setState(() => ({ emoji: !this.state.emoji }));
+    }
+
+    onDrop(picture) {
+        this.setState({
+            pictures: this.state.pictures.concat(picture)
+        });
     }
 
     onSubmit = (e) => {
@@ -88,7 +95,6 @@ export class BloggleForm extends React.Component {
                                 onChange={this.onTitleChange}
                                 autoComplete="off"
                             />
-                            <button className="button button-rounded" >Bloggle</button>
                         </div>
                         <textarea
                             id="textarea"
@@ -99,13 +105,17 @@ export class BloggleForm extends React.Component {
                             onKeyDown={this.handleReturnKey}
                         >
                         </textarea>
+                        <div className="form-bar">
+                            <div className="buttons-div">
+                                <span className="emoji-button" onClick={this.emojiToggle}><img className="button-size" src="https://png.icons8.com/metro/1600/happy.png" /></span>
+                                <button className="button button__form-button" >Bloggle</button>
+                            </div>
+                        </div>
+                        <div className="picker-div">
+                            {this.state.emoji && <Picker perLine={window.innerWidth <= 768 ? 7 : 19} onClick={this.addEmoji} native={true} />}
+                        </div>
                 </form>
-                <div className="emoji-div">
-                    <button className="emoji-button" onClick={this.emojiToggle}><img className="button-size" src="https://png.icons8.com/metro/1600/happy.png" /></button>
-                </div>
-                <div className="picker-div">
-                    {this.state.emoji && <Picker perLine={window.innerWidth <= 768 ? 8 : 19} onClick={this.addEmoji} native={true} />}
-                </div>
+
             </div>
         )
     }

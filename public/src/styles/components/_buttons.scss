@@ -46,10 +46,6 @@
     width: 185px;
 }
 
-.button-rounded {
-    border-radius: 30px;
-}
-
 .emoji-button {
     width: 15px;
     background: none;
@@ -65,4 +61,11 @@
     &:hover {
         opacity: .5;
     }
+}
+
+.button__form-button {
+    margin-left: 20px;
+    margin-top: -12px;
+    height: 40px;
+    border-radius: 15px;
 }
