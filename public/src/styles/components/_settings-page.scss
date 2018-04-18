@@ -6,14 +6,12 @@
 
 .text-setting {
     width: 630px;
-    border-radius: 10px;
     border: 1px solid #cacccd;
     height: 50px;
     padding: $s-size;
     font-size: $font-size-large;
     font-weight: 300;
-    margin-right: 20px;
-
+    max-width: 80rem;
     @media (max-width: $desktop-breakpoint) {
         width: unset;
     }

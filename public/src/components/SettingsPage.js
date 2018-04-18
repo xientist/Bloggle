@@ -68,7 +68,7 @@ import { startUpdateUserBlogs } from '../actions/blogs';
         <div>
             <Header />
             <div className="content-container settings">
-                <form  onSubmit={this.onSubmit} >
+                <form onSubmit={this.onSubmit} >
                     <p className="form__error">{this.state.error}</p>
                     <h3>Set the username you want to display</h3>
                     <input

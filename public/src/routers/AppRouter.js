@@ -18,8 +18,8 @@ const AppRouter = () => (
     <Router history={history}>
         <div>
             <Switch>
-                
-                <Route path="/" component={BlogDashboardPage} exact={true} />
+                <Route path="/" component={LandingPage} exact={true} />
+                <Route path="/dashboard" component={BlogDashboardPage} />
                 <Route path="/profile/:id" component={UserProfile} />
                 <PrivateRoute path="/edit/:id" component={EditBlogPage} />
                 <PrivateRoute path="/settings" component={SettingsPage} />
@@ -29,6 +29,6 @@ const AppRouter = () => (
     </Router>
 );
 
-//<Route path="/" component={LandingPage} exact={true} />
+
 
 export default AppRouter;

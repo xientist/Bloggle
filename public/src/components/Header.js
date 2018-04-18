@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { startLogout , startLoginGoogle , startLoginFacebook } from '../actions/auth';
 
-
 class Header extends React.Component {
 
     startStartLogout = () => {
@@ -18,7 +17,6 @@ class Header extends React.Component {
         });
     
     }
-
 
     render() {
         return (
@@ -36,7 +34,6 @@ class Header extends React.Component {
         )
     }
 }
-
 
 const mapStateToProps = (state) => {
     return {
