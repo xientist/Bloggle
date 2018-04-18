@@ -10,7 +10,7 @@ const config = {
   };
   
 
-firebase.initializeApp(config);
+  firebase.initializeApp(config);
 
 
 
