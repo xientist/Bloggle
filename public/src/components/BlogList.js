@@ -25,7 +25,6 @@ export class BlogList extends React.Component {
         return (
 
             <div className="content-container">
- 
                 <div className="list-body">
                     {
                         this.props.bloggles.length === 0 ? (
