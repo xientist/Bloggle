@@ -17,7 +17,7 @@ const LandingPage = () => (
                 <div className="code-logo-div"><img className="code-logo" src="https://cdn.worldvectorlogo.com/logos/react.svg"/></div>
                 <div className="code-logo-div"><img className="code-logo" src="http://blog.js-republic.com/wp-content/uploads/2016/11/logo-redux.png"/></div>
                 <div className="code-logo-div"><img className="code-logo" src="http://sass-lang.com/assets/img/logos/logo-b6e1ef6e.svg"/></div>
-                <div className="code-logo-div"><img className="code-logo" src="https://firebase.google.com/_static/images/firebase/touchicon-180.png"/></div>
+                <div className="code-logo-div"><img className="code-logo" src="https://img.icons8.com/color/480/firebase.png"/></div>
                 <div className="code-logo-div"><img className="code-logo-babel" src="https://raw.githubusercontent.com/babel/logo/master/babel.png"/></div>
             </div>
             <div className="landing-divider">
@@ -27,13 +27,15 @@ const LandingPage = () => (
                 <div className="landing-block-image"><img className="block-image" src="https://www.webnode.com/blog/wp-content/uploads/2016/10/Blog-intro.jpg" /></div>
                 <div className="landing-block-info">
                     <h2 className="block-info-header">Share your life with a bloggle.</h2>
-                    <p className="block-info-paragaph">Through Bloggle, you can type out whatever life throws at you and share with thousands of online strangers who are most likely more than relucatant to even care about your life. This website features an edit function incase your bloggle is too embarassing, and you can also set up your username and profile picture. Once every blue moon, a stranger may have something in common with you and may even like your bloggle! Of course, that like can be retracted with a reclick of the 'like' button.</p>
+                    <p className="block-info-paragaph">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida mauris consectetur urna sagittis, quis cursus libero varius. Maecenas et dolor sit amet tortor pretium eleifend. Praesent a luctus lacus, id efficitur arcu. Fusce elit tellus, accumsan et porttitor nec, suscipit in mauris. Cras feugiat at lorem sed dignissim. Sed ac fringilla eros. Proin sit amet nisi a orci lacinia euismod id in leo. Morbi ac facilisis augue.</p>
                 </div>
             </div>
             <div className="landing-block-container">
                 <div className="landing-block-info">
                     <h2 className="block-info-header">There's much more than meets the eye.</h2>
-                    <p className="block-info-paragaph">Pick from a hundred emojis through our emoticon selector. Let the world know that you're happy, sad, angry, or disgusted through our many beautiful emoticons. Words alone do not justify the way how we feel, make sure all those internet strangers really REALLY know how strongly you feel about your life with those yellow-faced emojis (note: they also come in different colors too! No discrimination!).</p>
+                    <p className="block-info-paragaph">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida mauris consectetur urna sagittis, quis cursus libero varius. Maecenas et dolor sit amet tortor pretium eleifend. Praesent a luctus lacus, id efficitur arcu. Fusce elit tellus, accumsan et porttitor nec, suscipit in mauris. Cras feugiat at lorem sed dignissim. Sed ac fringilla eros. Proin sit amet nisi a orci lacinia euismod id in leo. Morbi ac facilisis augue.</p>
                 </div>
                 <div className="landing-block-image"><img className="block-image" src="https://78.media.tumblr.com/a744c40c7139f078c0d265b34ba05e31/tumblr_inline_n1nm9tNadA1s4rar7.png" /></div>
             </div>

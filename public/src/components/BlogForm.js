@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import database from '../firebase/firebase';
+import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart';
 
 export class BloggleForm extends React.Component {
@@ -112,7 +113,7 @@ export class BloggleForm extends React.Component {
                             </div>
                         </div>
                         <div className="picker-div">
-                            {this.state.emoji && <Picker perLine={window.innerWidth <= 768 ? 7 : 19} onClick={this.addEmoji} native={true} />}
+                            {this.state.emoji && <Picker perLine={window.innerWidth <= 768 ? 7 : 19} onSelect={this.addEmoji} native={true} />}
                         </div>
                 </form>
 
