@@ -108,7 +108,7 @@ export class BloggleForm extends React.Component {
                         </textarea>
                         <div className="form-bar">
                             <div className="buttons-div">
-                                <span className="emoji-button" onClick={this.emojiToggle}><img className="button-size" src="https://png.icons8.com/metro/1600/happy.png" /></span>
+                                <span className="emoji-button" onClick={this.emojiToggle}><img className="button-size" src="https://cdn0.iconfinder.com/data/icons/smashicons-emoticons-outline-vol-4/44/217_-_Happy_emoticon_emoji_face-512.png" /></span>
                                 <button className="button button__form-button" >Bloggle</button>
                             </div>
                         </div>
